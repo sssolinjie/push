@@ -2,7 +2,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@import bdpush;
+@import lbwpush;
 
 // This demonstrates a simple unit test of the Objective-C portion of this plugin's implementation.
 //
@@ -15,7 +15,7 @@
 @implementation RunnerTests
 
 - (void)testExample {
-  BdpushPlugin *plugin = [[BdpushPlugin alloc] init];
+  LbwpushPlugin *plugin = [[LbwpushPlugin alloc] init];
 
   FlutterMethodCall *call = [FlutterMethodCall methodCallWithMethodName:@"getPlatformVersion"
                                                               arguments:nil];

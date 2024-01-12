@@ -1,0 +1,6 @@
+framework module SPSDKMessage {
+  umbrella header "SPSDKMessage.h"
+
+  export *
+  module * { export * }
+}

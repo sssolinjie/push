@@ -1,14 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="com.lianshi.cdwhg"
+        android:label="lbwpush_example"
         android:name="${applicationName}"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
-        android:largeHeap="true"
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
-            android:largeHeap="true"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
@@ -28,18 +29,17 @@
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
-         <receiver
-            android:name=".MyReceiver"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="com.baidu.techain.push.action.PUSH_EVENT" />
-
-                <category android:name="com.lianshi.cdwhg" />
-            </intent-filter>
-        </receiver>
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <receiver  
+            android:name="com.example.lbwpush.MyReceiver"  
+            android:exported="false" >  
+                <intent-filter>  
+                    <action android:name="com.baidu.techain.push.action.PUSH_EVENT" />  
+                    <category android:name="com.lianshi.cdwhg" />  
+                </intent-filter>  
+        </receiver>
         <meta-data android:name="XPUSH_SECKEY" android:value="831719873468e15ce3093d0832f89595"/>
         <meta-data android:name="XPUSH_APPKEY" android:value="700042332" />
     </application>

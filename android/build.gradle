@@ -1,4 +1,4 @@
-group 'com.example.bdpush'
+group 'com.example.lbwpush'
 version '1.0'
 
 buildscript {
@@ -16,13 +16,18 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
+        flatDir{
+            dirs project(':lbwpush').file('libs')
+        }
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.example.lbwpush'
+    }
 
     compileSdkVersion 33
 
@@ -34,13 +39,6 @@ android {
     defaultConfig {
         minSdkVersion 19
     }
-
-    dependencies {
-        testImplementation 'junit:junit:4.13.2'
-        testImplementation 'org.mockito:mockito-core:5.0.0'
-        compileOnly files('libs/lib-techain-release.aar')
-    }
-
     testOptions {
         unitTests.all {
             testLogging {
@@ -49,5 +47,20 @@ android {
                showStandardStreams = true
             }
         }
+    }
+}
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:5.0.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(name: 'lib-techain-release-3.6.5.2', ext: 'aar')
+    androidTestImplementation 'com.android.support.test:runner:0.2'
+    androidTestImplementation 'com.android.support.test:rules:0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.1'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2') {
+        exclude  group:'org.hamcrest'
     }
 }

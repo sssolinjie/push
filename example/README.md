@@ -1,6 +1,6 @@
-# com.lianshi.cdwhg
+# lbwpush_example
 
-Demonstrates how to use the bdpush plugin.
+Demonstrates how to use the lbwpush plugin.
 
 ## Getting Started
 

@@ -1,4 +1,4 @@
-name: bdpush
+name: lbwpush
 description: "A new Flutter plugin project."
 version: 0.0.1
 homepage:
@@ -35,10 +35,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.bdpush
-        pluginClass: BdpushPlugin
+        package: com.example.lbwpush
+        pluginClass: LbwpushPlugin
       ios:
-        pluginClass: BdpushPlugin
+        pluginClass: LbwpushPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
