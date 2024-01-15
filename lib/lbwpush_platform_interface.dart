@@ -78,4 +78,7 @@ abstract class LbwpushPlatform extends PlatformInterface {
   void addEventHandler(Function call){
     throw UnimplementedError('addEventHandler() has not been implemented.');
   }
+  void setbadge(){
+    throw UnimplementedError('setbadge() has not been implemented.');
+  }
 }

@@ -60,7 +60,12 @@
         NSLog(@"areNotificationsEnabled ios is not function");
     }else if ([@"showNotificationGuide" isEqualToString:call.method]) {
         NSLog(@"showNotificationGuide ios is not function");
-//        [_channel invokeMethod:@"onNotification1" arguments:@"你好"];
+    }
+    else if ([@"setbadge" isEqualToString:call.method]) {
+        SPAsyncOperationCompletion completion = ^(NSError *error) {
+            
+        };
+        [SPSDKLib setBadge:0 withCompletion:completion];
     }
     else {
         result(FlutterMethodNotImplemented);

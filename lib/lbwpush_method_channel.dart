@@ -103,4 +103,9 @@ class MethodChannelLbwpush extends LbwpushPlatform {
       callback(data.method, data.arguments);
     });
   }
+
+  @override
+  Future<void> setbadge() async{
+   await methodChannel.invokeMethod('setbadge');
+  }
 }

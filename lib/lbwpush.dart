@@ -64,5 +64,9 @@ class Lbwpush {
   void addEventHandler(Function call){
     return LbwpushPlatform.instance.addEventHandler(call);
   }
+
+  void setbadge(){
+    return LbwpushPlatform.instance.setbadge();
+  }
   
 }
