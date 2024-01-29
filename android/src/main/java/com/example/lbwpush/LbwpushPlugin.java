@@ -2,7 +2,7 @@ package com.example.lbwpush;
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
-
+import android.app.NotificationManager;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -115,21 +115,33 @@ public class LbwpushPlugin implements FlutterPlugin, MethodCallHandler {
     } 
     else if (call.method.equals("showNotificationGuide")) {
       showNotificationGuide();
-    } 
-    
-    else {
+    }
+    else if(call.method.equals("setbadge")){
+        setbadge();
+    } else {
       result.notImplemented();
     }
   }
 
- 
   ///初始化sdk
   public void initsdk(Map<String, String> params){
     TH.setAgreePolicy(context, true);
     TH.init(context, params.get("appkey"), params.get("SecKey"));
   }
+  public void setbadge(){
+      NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-  ///开启服务
+      if (notificationManager != null && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+          int badgeCount = notificationManager.getActiveNotifications().length;
+          notificationManager.cancelAll();
+      } else {
+          Intent intent = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
+          intent.putExtra("packageName", context.getPackageName());
+          intent.putExtra("count", 0);
+          context.sendBroadcast(intent);
+      }
+  }
+  ///开启服务Ï
   public void startPushService(){
     TH.tinvoke(100019, "setNotificationEnableInForeground",new Class[]  { boolean.class },  false);
     TH.startPushService();
@@ -426,4 +438,3 @@ public class LbwpushPlugin implements FlutterPlugin, MethodCallHandler {
     channel.setMethodCallHandler(null);
   }
 }
- 
