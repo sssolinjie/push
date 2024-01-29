@@ -107,8 +107,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   areNotificationsEnabled() async {
-    final data = await _lbwpushPlugin.areNotificationsEnabled();
-    print(data);
+    _lbwpushPlugin.setbadge();
+    // final data = await _lbwpushPlugin.areNotificationsEnabled();
+    // print(data);
   }
 
   showNotificationGuide() async {

@@ -63,7 +63,7 @@
     }
     else if ([@"setbadge" isEqualToString:call.method]) {
         SPAsyncOperationCompletion completion = ^(NSError *error) {
-            
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         };
         [SPSDKLib setBadge:0 withCompletion:completion];
     }
